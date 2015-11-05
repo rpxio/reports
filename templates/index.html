@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Reports - GlobalReports{% endblock %}
+
+{% block content_title %}Reports{% endblock %}
+
+{% block content %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Location</th>
+            <th>&nbsp;</th>
+        </thead>
+        <tbody>
+                {% for report in object_list %}
+                    <tr>
+                        <td>{{ report.id }}</td>
+                        <td>{{ report.timestamp }}</td>
+                        <td>{{ report.type }}</td>
+                        <td>{{ report.location }}</td>
+                        <td><a href="report/{{ report.id }}">View</a></td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="5">No reports have been submitted yet.</td></tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

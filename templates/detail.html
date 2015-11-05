@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Viewing Report #{{ report.id }}{% endblock %}
+
+{% block content_title %}Report #{{ report.id }} Details{% endblock %}
+
+{% block content %}
+    <b>Type of Violation</b>: {{ report.type }} <br />
+    <b>Location</b>: {{ report.location }} <br />
+
+    <hr />
+    <b>Details</b> <br />
+    {{ report.details }}
+{% endblock %}

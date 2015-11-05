@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}New Report - GlobalReports{% endblock %}
+
+{% block content_title %}Submit New Report{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('create') }}" class="form-horizontal" method="post">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="type">Type of Violation</label>
+                <select class="form-control" id="type" name="type">
+                    <option value="{{ request.form.get('type', 'Conflict of Interest') }}">Conflict of Interest</option>
+                    <option value="{{ request.form.get('type', 'Harassment') }}">Harassment</option>
+                    <option value="{{ request.form.get('type', 'Theft') }}">Theft</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="location">Location</label>
+                <input class="form-control" id="location" name="location" type="text" value="{{ request.form.get('location', '') }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="details">Please provide any details regarding the alleged violation.</label>
+                <textarea class="form-control" id="details" name="details" style="height: 300px;">{{ request.form.get('details', '') }}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input name="submitted" type="checkbox" value="n"> I agree to the <a href="#">terms and conditions</a> in making this report.
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <a class="btn btn-default" href="{{ url_for('index') }}">Cancel</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
